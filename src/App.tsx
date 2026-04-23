@@ -15,6 +15,7 @@ import { PRODUCTS, SERVICES, CONTACT_INFO, GALLERY_IMAGES, BRANDING } from "./co
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -43,8 +44,14 @@ export default function App() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary overflow-hidden">
-              {BRANDING.logo ? (
-                <img src={BRANDING.logo} className="h-full w-full object-cover" referrerPolicy="no-referrer" alt="Logo" />
+              {BRANDING.logo && !logoError ? (
+                <img 
+                  src={BRANDING.logo} 
+                  className="h-full w-full object-cover" 
+                  referrerPolicy="no-referrer" 
+                  alt="Logo" 
+                  onError={() => setLogoError(true)}
+                />
               ) : (
                 <Coffee className="h-6 w-6 text-primary-foreground" />
               )}
@@ -153,7 +160,7 @@ export default function App() {
               </motion.div>
               <motion.h1 
                 variants={itemVariants}
-                className="max-w-4xl text-5xl font-heading font-bold leading-tight md:text-7xl"
+                className="max-w-4xl text-4xl font-heading font-bold leading-tight md:text-7xl"
               >
                 Premium Coffee <span className="text-primary italic">Consumables</span> & Expert <span className="text-primary italic">Repairs</span>
               </motion.h1>
@@ -483,8 +490,18 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Coffee className="h-4 w-4" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary overflow-hidden">
+                {BRANDING.logo && !logoError ? (
+                  <img 
+                    src={BRANDING.logo} 
+                    className="h-full w-full object-cover" 
+                    referrerPolicy="no-referrer" 
+                    alt="Logo" 
+                    onError={() => setLogoError(true)}
+                  />
+                ) : (
+                  <Coffee className="h-4 w-4 text-primary-foreground" />
+                )}
               </div>
               <span className="text-lg font-heading font-bold tracking-tight">Manies Coffee Den</span>
             </div>
