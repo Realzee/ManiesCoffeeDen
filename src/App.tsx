@@ -103,7 +103,7 @@ export default function App() {
             <a href="#guarantee" className="text-sm font-medium hover:text-primary transition-colors">Guarantee</a>
             
             <Dialog open={isManageOpen} onOpenChange={setIsManageOpen}>
-              <DialogTrigger
+              <DialogTrigger nativeButton={false}
                 render={
                   <Button variant="ghost" size="sm" className="gap-2">
                     <Settings className="h-4 w-4" />
@@ -196,7 +196,7 @@ export default function App() {
               </DialogContent>
             </Dialog>
 
-            <Button size="sm" render={<a href={`tel:${CONTACT_INFO.phone}`}>Call Now</a>} />
+            <Button size="sm" nativeButton={false} render={<a href={`tel:${CONTACT_INFO.phone}`}>Call Now</a>} />
           </div>
         </div>
       </nav>
@@ -231,8 +231,8 @@ export default function App() {
                 Specializing in 2-group machine repairs and vending solutions across Johannesburg.
               </motion.p>
               <motion.div variants={itemVariants} className="mt-10 flex flex-wrap justify-center gap-4">
-                <Button size="lg" className="h-12 px-8 text-base" render={<a href="#products">View Price List</a>} />
-                <Button size="lg" variant="outline" className="h-12 px-8 text-base" render={<a href={`mailto:${CONTACT_INFO.email}`}>Request Quote</a>} />
+                <Button size="lg" nativeButton={false} className="h-12 px-8 text-base" render={<a href="#products">View Price List</a>} />
+                <Button size="lg" nativeButton={false} variant="outline" className="h-12 px-8 text-base" render={<a href={`mailto:${CONTACT_INFO.email}`}>Request Quote</a>} />
               </motion.div>
             </motion.div>
           </div>
@@ -448,7 +448,7 @@ export default function App() {
                   <ShieldCheck className="h-5 w-5" />
                   <span>Available to all contract supply clients.</span>
                 </div>
-                <Button size="lg" variant="secondary" className="mt-4" render={<a href={`tel:${CONTACT_INFO.phone}`}>Contact Manie for Details</a>} />
+                <Button size="lg" nativeButton={false} variant="secondary" className="mt-4" render={<a href={`tel:${CONTACT_INFO.phone}`}>Contact Manie for Details</a>} />
               </div>
               <div className="relative flex-1">
                 <div className="aspect-square rounded-3xl bg-white/10 p-8 backdrop-blur-sm">
