@@ -57,8 +57,8 @@
     --popover-foreground: oklch(0.15 0.02 40);
     --primary: oklch(0.25 0.04 45); /* Deep roasted bean */
     --primary-foreground: oklch(0.99 0.01 60);
-    --secondary: oklch(0.92 0.02 65); /* Soft latte */
-    --secondary-foreground: oklch(0.25 0.04 45);
+    --secondary: oklch(0.4 0.15 25); /* Deep Manie's Red */
+    --secondary-foreground: oklch(0.99 0.01 60);
     --muted: oklch(0.96 0.01 65);
     --muted-foreground: oklch(0.45 0.02 50);
     --accent: oklch(0.82 0.08 85); /* Rich crema gold */
@@ -66,7 +66,7 @@
     --destructive: oklch(0.55 0.2 25);
     --border: oklch(0.88 0.01 55);
     --input: oklch(0.88 0.01 55);
-    --ring: oklch(0.25 0.04 45);
+    --ring: oklch(0.4 0.15 25);
     --radius: 1rem;
 }
 

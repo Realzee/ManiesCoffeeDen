@@ -120,3 +120,9 @@ export const CONTACT_INFO = {
   location: "Soweto / Johannesburg",
   membership: "Member of VASA (Vending Association of South Africa)"
 };
+
+export const BRANDING = {
+  logo: "/logo.png",
+  hero: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop",
+  favicon: "/logo.png"
+};

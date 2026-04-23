@@ -3,68 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Coffee, Settings, ShieldCheck, Phone, Mail, MapPin, Award, ChevronRight, Wrench, Droplets, Zap, Plus, Trash2, Edit2, Image as ImageIcon } from "lucide-react";
+import { Coffee, Settings, ShieldCheck, Phone, Mail, MapPin, Award, ChevronRight, Wrench, Droplets, Zap, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Toaster } from "@/components/ui/sonner";
-import { toast } from "sonner";
-import { PRODUCTS as INITIAL_PRODUCTS, SERVICES as INITIAL_SERVICES, CONTACT_INFO, GALLERY_IMAGES as INITIAL_GALLERY } from "./constants";
+import { PRODUCTS, SERVICES, CONTACT_INFO, GALLERY_IMAGES, BRANDING } from "./constants";
 
 export default function App() {
-  const [products, setProducts] = useState(INITIAL_PRODUCTS);
-  const [services, setServices] = useState(INITIAL_SERVICES);
-  const [gallery, setGallery] = useState(INITIAL_GALLERY);
-  const [isManageOpen, setIsManageOpen] = useState(false);
-
-  // Load from localStorage on mount
-  useEffect(() => {
-    const savedProducts = localStorage.getItem("manies_products");
-    const savedServices = localStorage.getItem("manies_services");
-    const savedGallery = localStorage.getItem("manies_gallery");
-
-    if (savedProducts) setProducts(JSON.parse(savedProducts));
-    if (savedServices) setServices(JSON.parse(savedServices));
-    if (savedGallery) setGallery(JSON.parse(savedGallery));
-  }, []);
-
-  // Save to localStorage when state changes
-  useEffect(() => {
-    localStorage.setItem("manies_products", JSON.stringify(products));
-    localStorage.setItem("manies_services", JSON.stringify(services));
-    localStorage.setItem("manies_gallery", JSON.stringify(gallery));
-  }, [products, services, gallery]);
-
-  const updateProductImage = (catIdx: number, itemIdx: number, newImage: string) => {
-    const newProducts = [...products];
-    newProducts[catIdx].items[itemIdx].image = newImage;
-    setProducts(newProducts);
-    toast.success("Product image updated");
-  };
-
-  const updateServiceImage = (idx: number, newImage: string) => {
-    const newServices = [...services];
-    newServices[idx].image = newImage;
-    setServices(newServices);
-    toast.success("Service image updated");
-  };
-
-  const addGalleryImage = (url: string) => {
-    if (!url) return;
-    setGallery([url, ...gallery]);
-    toast.success("Gallery image added");
-  };
-
-  const removeGalleryImage = (idx: number) => {
-    setGallery(gallery.filter((_, i) => i !== idx));
-    toast.success("Gallery image removed");
-  };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -91,8 +39,12 @@ export default function App() {
       <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <Coffee className="h-6 w-6" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary overflow-hidden">
+              {BRANDING.logo ? (
+                <img src={BRANDING.logo} className="h-full w-full object-cover" referrerPolicy="no-referrer" alt="Logo" />
+              ) : (
+                <Coffee className="h-6 w-6 text-primary-foreground" />
+              )}
             </div>
             <span className="text-xl font-heading font-bold tracking-tight text-primary">Manies Coffee Den</span>
           </div>
@@ -102,100 +54,6 @@ export default function App() {
             <a href="#gallery" className="text-sm font-medium hover:text-primary transition-colors">Gallery</a>
             <a href="#guarantee" className="text-sm font-medium hover:text-primary transition-colors">Guarantee</a>
             
-            <Dialog open={isManageOpen} onOpenChange={setIsManageOpen}>
-              <DialogTrigger nativeButton={false}
-                render={
-                  <Button variant="ghost" size="sm" className="gap-2">
-                    <Settings className="h-4 w-4" />
-                    Manage
-                  </Button>
-                }
-              />
-              <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle>Manage Content & Images</DialogTitle>
-                  <DialogDescription>
-                    Update product images, service photos, and your gallery. Changes are saved locally.
-                  </DialogDescription>
-                </DialogHeader>
-                
-                <Tabs defaultValue="manage-products">
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="manage-products">Products</TabsTrigger>
-                    <TabsTrigger value="manage-services">Services</TabsTrigger>
-                    <TabsTrigger value="manage-gallery">Gallery</TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="manage-products" className="space-y-4 mt-4">
-                    {products.map((cat, catIdx) => (
-                      <div key={catIdx} className="space-y-2">
-                        <h4 className="font-bold border-b pb-1">{cat.category}</h4>
-                        <div className="grid gap-4">
-                          {cat.items.map((item, itemIdx) => (
-                            <div key={itemIdx} className="flex items-center gap-4 rounded-lg border p-2">
-                              <img src={item.image} className="h-12 w-12 rounded object-cover" referrerPolicy="no-referrer" />
-                              <div className="flex-1">
-                                <p className="text-sm font-medium">{item.name}</p>
-                                <Input 
-                                  placeholder="Image URL" 
-                                  value={item.image} 
-                                  onChange={(e) => updateProductImage(catIdx, itemIdx, e.target.value)}
-                                  className="h-8 text-xs mt-1"
-                                />
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </TabsContent>
-                  
-                  <TabsContent value="manage-services" className="space-y-4 mt-4">
-                    <div className="grid gap-4">
-                      {services.map((service, idx) => (
-                        <div key={idx} className="flex items-center gap-4 rounded-lg border p-2">
-                          <img src={service.image} className="h-12 w-12 rounded object-cover" referrerPolicy="no-referrer" />
-                          <div className="flex-1">
-                            <p className="text-sm font-medium">{service.name}</p>
-                            <Input 
-                              placeholder="Image URL" 
-                              value={service.image} 
-                              onChange={(e) => updateServiceImage(idx, e.target.value)}
-                              className="h-8 text-xs mt-1"
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </TabsContent>
-                  
-                  <TabsContent value="manage-gallery" className="space-y-4 mt-4">
-                    <div className="flex gap-2">
-                      <Input id="new-gallery-url" placeholder="New Image URL" className="flex-1" />
-                      <Button onClick={() => {
-                        const input = document.getElementById('new-gallery-url') as HTMLInputElement;
-                        addGalleryImage(input.value);
-                        input.value = '';
-                      }}>Add</Button>
-                    </div>
-                    <div className="grid grid-cols-4 gap-2">
-                      {gallery.map((img, idx) => (
-                        <div key={idx} className="group relative aspect-square rounded border overflow-hidden">
-                          <img src={img} className="h-full w-full object-cover" referrerPolicy="no-referrer" />
-                          <button 
-                            onClick={() => removeGalleryImage(idx)}
-                            className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity"
-                          >
-                            <Trash2 className="h-4 w-4 text-white" />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </DialogContent>
-            </Dialog>
-
             <Button size="sm" nativeButton={false} render={<a href={`tel:${CONTACT_INFO.phone}`}>Call Now</a>} />
           </div>
         </div>
@@ -204,6 +62,16 @@ export default function App() {
       <main>
         {/* Hero Section */}
         <section className="relative overflow-hidden py-20 md:py-32">
+          {BRANDING.hero && (
+            <div className="absolute inset-0 -z-20">
+              <img 
+                src={BRANDING.hero} 
+                className="h-full w-full object-cover opacity-10 blur-[2px]" 
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+            </div>
+          )}
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary),0.05),transparent)] opacity-50" />
           <div className="container mx-auto px-4 md:px-6">
             <motion.div 
@@ -295,7 +163,7 @@ export default function App() {
 
               <TabsContent value="products" className="mt-8">
                 <div className="grid gap-8">
-                  {products.map((category, idx) => (
+                  {PRODUCTS.map((category, idx) => (
                     <Card key={idx} className="overflow-hidden border-primary/10 bg-card/50 backdrop-blur-sm">
                       <CardHeader className="bg-primary/5 border-b border-primary/5">
                         <CardTitle className="text-2xl font-heading flex items-center gap-2">
@@ -354,7 +222,7 @@ export default function App() {
                   </CardHeader>
                   <CardContent className="p-6">
                     <div className="grid gap-6 md:grid-cols-2">
-                      {services.map((service: any, idx: number) => (
+                      {SERVICES.map((service: any, idx: number) => (
                         <motion.div 
                           key={idx} 
                           whileHover={{ x: 5 }}
@@ -416,7 +284,7 @@ export default function App() {
             </div>
             
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-              {gallery.map((img, idx) => (
+              {GALLERY_IMAGES.map((img, idx) => (
                 <motion.div 
                   key={idx}
                   whileHover={{ scale: 1.05, rotate: idx % 2 === 0 ? 1 : -1 }}
