@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Coffee, Settings, ShieldCheck, Phone, Mail, MapPin, Award, ChevronRight, Wrench, Droplets, Zap, Plus } from "lucide-react";
+import { Coffee, Settings, ShieldCheck, Phone, Mail, MapPin, Award, ChevronRight, Wrench, Droplets, Zap, Plus, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +14,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { PRODUCTS, SERVICES, CONTACT_INFO, GALLERY_IMAGES, BRANDING } from "./constants";
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,8 +49,10 @@ export default function App() {
                 <Coffee className="h-6 w-6 text-primary-foreground" />
               )}
             </div>
-            <span className="text-xl font-heading font-bold tracking-tight text-primary">Manies Coffee Den</span>
+            <span className="text-lg md:text-xl font-heading font-bold tracking-tight text-primary truncate max-w-[200px] md:max-w-none">Manies Coffee Den</span>
           </div>
+
+          {/* Desktop Navigation */}
           <div className="hidden items-center gap-6 md:flex">
             <a href="#products" className="text-sm font-medium hover:text-primary transition-colors">Products</a>
             <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">Services</a>
@@ -56,7 +61,68 @@ export default function App() {
             
             <Button size="sm" nativeButton={false} render={<a href={`tel:${CONTACT_INFO.phone}`}>Call Now</a>} />
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="flex md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="border-b bg-background md:hidden overflow-hidden"
+            >
+              <div className="flex flex-col space-y-4 p-4">
+                <a 
+                  href="#products" 
+                  className="text-lg font-medium py-2 border-b border-border/50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Products
+                </a>
+                <a 
+                  href="#services" 
+                  className="text-lg font-medium py-2 border-b border-border/50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Services
+                </a>
+                <a 
+                  href="#gallery" 
+                  className="text-lg font-medium py-2 border-b border-border/50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Gallery
+                </a>
+                <a 
+                  href="#guarantee" 
+                  className="text-lg font-medium py-2 border-b border-border/50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Guarantee
+                </a>
+                <Button 
+                  className="w-full justify-center text-lg h-12" 
+                  nativeButton={false} 
+                  render={<a href={`tel:${CONTACT_INFO.phone}`}>Call Manie Now</a>}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <main>
@@ -157,8 +223,8 @@ export default function App() {
 
             <Tabs defaultValue="products" className="mx-auto max-w-5xl">
               <TabsList className="grid w-full grid-cols-2 bg-secondary/50 p-1">
-                <TabsTrigger value="products" className="text-base">Coffee & Solubles</TabsTrigger>
-                <TabsTrigger value="services" className="text-base">Technical Services</TabsTrigger>
+                <TabsTrigger value="products" className="text-sm md:text-base">Coffee & Solubles</TabsTrigger>
+                <TabsTrigger value="services" className="text-sm md:text-base">Technical Services</TabsTrigger>
               </TabsList>
 
               <TabsContent value="products" className="mt-8">
