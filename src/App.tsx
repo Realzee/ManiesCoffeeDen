@@ -42,11 +42,10 @@ export default function App() {
       <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden shrink-0">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-primary/10 overflow-hidden shrink-0">
               <img 
                 src={BRANDING.logo} 
                 className="h-full w-full object-contain p-0.5" 
-                referrerPolicy="no-referrer" 
                 alt="Logo" 
               />
             </div>
@@ -148,11 +147,10 @@ export default function App() {
               className="flex flex-col items-center text-center"
             >
               <motion.div variants={itemVariants} className="mb-0 -mt-2 md:-mt-4">
-                <div className="mx-auto h-[120px] w-[120px] md:h-[180px] md:w-[180px] flex items-center justify-center">
+                <div className="mx-auto h-[100px] w-[100px] md:h-[150px] md:w-[150px] flex items-center justify-center">
                   <img 
                     src={BRANDING.logo} 
                     className="h-full w-full object-contain drop-shadow-2xl" 
-                    referrerPolicy="no-referrer" 
                     alt="Manie's Coffee Den Logo" 
                   />
                 </div>
@@ -494,11 +492,10 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden shrink-0">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-primary/10 overflow-hidden shrink-0">
                 <img 
                   src={BRANDING.logo} 
                   className="h-full w-full object-contain p-0.5" 
-                  referrerPolicy="no-referrer" 
                   alt="Logo" 
                 />
               </div>
