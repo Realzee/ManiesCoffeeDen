@@ -42,10 +42,10 @@ export default function App() {
       <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-primary/10 overflow-hidden">
+            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden">
               <img 
                 src={BRANDING.logo} 
-                className="h-full w-full object-contain p-0" 
+                className="h-full w-full object-contain p-1" 
                 referrerPolicy="no-referrer" 
                 alt="Logo" 
               />
@@ -147,11 +147,11 @@ export default function App() {
               variants={containerVariants}
               className="flex flex-col items-center text-center"
             >
-              <motion.div variants={itemVariants} className="mb-0 -mt-4 md:-mt-8">
-                <div className="mx-auto h-72 w-72 md:h-[450px] md:w-[450px] overflow-hidden rounded-full bg-white shadow-2xl border-4 border-primary/20 flex items-center justify-center">
+              <motion.div variants={itemVariants} className="mb-0 -mt-10 md:-mt-20">
+                <div className="mx-auto h-[320px] w-[320px] md:h-[550px] md:w-[550px] flex items-center justify-center">
                   <img 
                     src={BRANDING.logo} 
-                    className="h-full w-full object-contain p-2" 
+                    className="h-full w-full object-contain drop-shadow-2xl" 
                     referrerPolicy="no-referrer" 
                     alt="Manie's Coffee Den Logo" 
                   />
@@ -494,10 +494,10 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-primary/10 overflow-hidden">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden">
                 <img 
                   src={BRANDING.logo} 
-                  className="h-full w-full object-contain p-0" 
+                  className="h-full w-full object-contain p-1" 
                   referrerPolicy="no-referrer" 
                   alt="Logo" 
                 />
