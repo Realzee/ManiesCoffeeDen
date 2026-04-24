@@ -44,12 +44,12 @@ export default function App() {
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-primary/10 overflow-hidden shrink-0">
               <img 
+                key={BRANDING.logo}
                 src={BRANDING.logo} 
                 className="h-full w-full object-contain p-0.5" 
                 alt="Logo" 
               />
             </div>
-            <span className="text-lg md:text-xl font-heading font-bold tracking-tight text-primary truncate max-w-[200px] md:max-w-none">Manies Coffee Den</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -147,8 +147,9 @@ export default function App() {
               className="flex flex-col items-center text-center"
             >
               <motion.div variants={itemVariants} className="mb-0 -mt-2 md:-mt-4">
-                <div className="mx-auto h-[100px] w-[100px] md:h-[150px] md:w-[150px] flex items-center justify-center">
-                  <img 
+                <div className="mx-auto h-[80px] w-[80px] md:h-[120px] md:w-[120px] flex items-center justify-center">
+                   <img 
+                    key={BRANDING.logo}
                     src={BRANDING.logo} 
                     className="h-full w-full object-contain drop-shadow-2xl" 
                     alt="Manie's Coffee Den Logo" 
@@ -494,12 +495,12 @@ export default function App() {
             <div className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-primary/10 overflow-hidden shrink-0">
                 <img 
+                  key={BRANDING.logo}
                   src={BRANDING.logo} 
                   className="h-full w-full object-contain p-0.5" 
                   alt="Logo" 
                 />
               </div>
-              <span className="text-lg font-heading font-bold tracking-tight">Manies Coffee Den</span>
             </div>
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Manies Coffee Den. All rights reserved.
