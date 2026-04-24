@@ -128,7 +128,7 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden pb-12 md:pb-20 pt-0">
+        <section className="relative overflow-hidden pb-12 md:pb-20 pt-8">
           {BRANDING.hero && (
             <div className="absolute inset-0 -z-20">
               <img 
@@ -148,7 +148,7 @@ export default function App() {
               className="flex flex-col items-center text-center"
             >
               <motion.div variants={itemVariants} className="mb-0 -mt-6 md:-mt-12">
-                <div className="mx-auto h-[240px] w-[240px] md:h-[400px] md:w-[400px] flex items-center justify-center">
+                <div className="mx-auto h-[200px] w-[200px] md:h-[320px] md:w-[320px] flex items-center justify-center">
                   <img 
                     src={BRANDING.logo} 
                     className="h-full w-full object-contain drop-shadow-2xl" 
