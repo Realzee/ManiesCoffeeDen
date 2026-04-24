@@ -153,6 +153,21 @@ export default function App() {
               variants={containerVariants}
               className="flex flex-col items-center text-center"
             >
+              <motion.div variants={itemVariants} className="mb-6">
+                <div className="mx-auto h-24 w-24 md:h-32 md:w-32 overflow-hidden rounded-full bg-primary shadow-xl border-4 border-background flex items-center justify-center">
+                  {BRANDING.logo && !logoError ? (
+                    <img 
+                      src={BRANDING.logo} 
+                      className="h-full w-full object-cover" 
+                      referrerPolicy="no-referrer" 
+                      alt="Main Logo" 
+                      onError={() => setLogoError(true)}
+                    />
+                  ) : (
+                    <Coffee className="h-12 w-12 md:h-16 md:w-16 text-primary-foreground" />
+                  )}
+                </div>
+              </motion.div>
               <motion.div variants={itemVariants}>
                 <Badge variant="outline" className="mb-4 border-primary/20 bg-primary/5 px-4 py-1 text-primary">
                   {CONTACT_INFO.membership}
