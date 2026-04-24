@@ -15,7 +15,6 @@ import { PRODUCTS, SERVICES, CONTACT_INFO, GALLERY_IMAGES, BRANDING } from "./co
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [logoError, setLogoError] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -43,18 +42,13 @@ export default function App() {
       <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary overflow-hidden">
-              {BRANDING.logo && !logoError ? (
-                <img 
-                  src={BRANDING.logo} 
-                  className="h-full w-full object-cover" 
-                  referrerPolicy="no-referrer" 
-                  alt="Logo" 
-                  onError={() => setLogoError(true)}
-                />
-              ) : (
-                <Coffee className="h-6 w-6 text-primary-foreground" />
-              )}
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-primary/10 overflow-hidden">
+              <img 
+                src={BRANDING.logo} 
+                className="h-full w-full object-contain p-1" 
+                referrerPolicy="no-referrer" 
+                alt="Logo" 
+              />
             </div>
             <span className="text-lg md:text-xl font-heading font-bold tracking-tight text-primary truncate max-w-[200px] md:max-w-none">Manies Coffee Den</span>
           </div>
@@ -134,7 +128,7 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 md:py-32">
+        <section className="relative overflow-hidden pb-20 md:pb-32 pt-4 md:pt-8">
           {BRANDING.hero && (
             <div className="absolute inset-0 -z-20">
               <img 
@@ -153,23 +147,18 @@ export default function App() {
               variants={containerVariants}
               className="flex flex-col items-center text-center"
             >
-              <motion.div variants={itemVariants} className="mb-6">
-                <div className="mx-auto h-24 w-24 md:h-32 md:w-32 overflow-hidden rounded-full bg-primary shadow-xl border-4 border-background flex items-center justify-center">
-                  {BRANDING.logo && !logoError ? (
-                    <img 
-                      src={BRANDING.logo} 
-                      className="h-full w-full object-cover" 
-                      referrerPolicy="no-referrer" 
-                      alt="Main Logo" 
-                      onError={() => setLogoError(true)}
-                    />
-                  ) : (
-                    <Coffee className="h-12 w-12 md:h-16 md:w-16 text-primary-foreground" />
-                  )}
+              <motion.div variants={itemVariants} className="mb-0">
+                <div className="mx-auto h-56 w-56 md:h-80 md:w-80 overflow-hidden rounded-full bg-white shadow-2xl border-4 border-primary/20 flex items-center justify-center">
+                  <img 
+                    src={BRANDING.logo} 
+                    className="h-full w-full object-contain p-4" 
+                    referrerPolicy="no-referrer" 
+                    alt="Manie's Coffee Den Logo" 
+                  />
                 </div>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <Badge variant="outline" className="mb-4 border-primary/20 bg-primary/5 px-4 py-1 text-primary">
+                <Badge variant="outline" className="mb-8 border-primary/20 bg-primary/5 px-4 py-1 text-primary">
                   {CONTACT_INFO.membership}
                 </Badge>
               </motion.div>
@@ -505,18 +494,13 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary overflow-hidden">
-                {BRANDING.logo && !logoError ? (
-                  <img 
-                    src={BRANDING.logo} 
-                    className="h-full w-full object-cover" 
-                    referrerPolicy="no-referrer" 
-                    alt="Logo" 
-                    onError={() => setLogoError(true)}
-                  />
-                ) : (
-                  <Coffee className="h-4 w-4 text-primary-foreground" />
-                )}
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-primary/10 overflow-hidden">
+                <img 
+                  src={BRANDING.logo} 
+                  className="h-full w-full object-contain p-1" 
+                  referrerPolicy="no-referrer" 
+                  alt="Logo" 
+                />
               </div>
               <span className="text-lg font-heading font-bold tracking-tight">Manies Coffee Den</span>
             </div>
