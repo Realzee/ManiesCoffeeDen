@@ -122,7 +122,7 @@ export const CONTACT_INFO = {
 };
 
 export const BRANDING = {
-  logo: "/logo.png",
+  logo: "logo.png",
   hero: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop",
-  favicon: "/logo.png"
+  favicon: "logo.png"
 };

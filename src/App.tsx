@@ -45,7 +45,7 @@ export default function App() {
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-primary/10 overflow-hidden">
               <img 
                 src={BRANDING.logo} 
-                className="h-full w-full object-contain p-1" 
+                className="h-full w-full object-contain p-0" 
                 referrerPolicy="no-referrer" 
                 alt="Logo" 
               />
@@ -128,7 +128,7 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden pb-20 md:pb-32 pt-4 md:pt-8">
+        <section className="relative overflow-hidden pb-12 md:pb-20 pt-0">
           {BRANDING.hero && (
             <div className="absolute inset-0 -z-20">
               <img 
@@ -147,11 +147,11 @@ export default function App() {
               variants={containerVariants}
               className="flex flex-col items-center text-center"
             >
-              <motion.div variants={itemVariants} className="mb-0">
-                <div className="mx-auto h-56 w-56 md:h-80 md:w-80 overflow-hidden rounded-full bg-white shadow-2xl border-4 border-primary/20 flex items-center justify-center">
+              <motion.div variants={itemVariants} className="mb-0 -mt-4 md:-mt-8">
+                <div className="mx-auto h-72 w-72 md:h-[450px] md:w-[450px] overflow-hidden rounded-full bg-white shadow-2xl border-4 border-primary/20 flex items-center justify-center">
                   <img 
                     src={BRANDING.logo} 
-                    className="h-full w-full object-contain p-4" 
+                    className="h-full w-full object-contain p-2" 
                     referrerPolicy="no-referrer" 
                     alt="Manie's Coffee Den Logo" 
                   />
@@ -497,7 +497,7 @@ export default function App() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-primary/10 overflow-hidden">
                 <img 
                   src={BRANDING.logo} 
-                  className="h-full w-full object-contain p-1" 
+                  className="h-full w-full object-contain p-0" 
                   referrerPolicy="no-referrer" 
                   alt="Logo" 
                 />
