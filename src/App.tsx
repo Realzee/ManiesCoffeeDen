@@ -42,10 +42,10 @@ export default function App() {
       <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden shrink-0">
               <img 
                 src={BRANDING.logo} 
-                className="h-full w-full object-contain p-1" 
+                className="h-full w-full object-contain p-0.5" 
                 referrerPolicy="no-referrer" 
                 alt="Logo" 
               />
@@ -147,8 +147,8 @@ export default function App() {
               variants={containerVariants}
               className="flex flex-col items-center text-center"
             >
-              <motion.div variants={itemVariants} className="mb-0 -mt-10 md:-mt-20">
-                <div className="mx-auto h-[320px] w-[320px] md:h-[550px] md:w-[550px] flex items-center justify-center">
+              <motion.div variants={itemVariants} className="mb-0 -mt-6 md:-mt-12">
+                <div className="mx-auto h-[240px] w-[240px] md:h-[400px] md:w-[400px] flex items-center justify-center">
                   <img 
                     src={BRANDING.logo} 
                     className="h-full w-full object-contain drop-shadow-2xl" 
@@ -494,10 +494,10 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-primary/10 overflow-hidden shrink-0">
                 <img 
                   src={BRANDING.logo} 
-                  className="h-full w-full object-contain p-1" 
+                  className="h-full w-full object-contain p-0.5" 
                   referrerPolicy="no-referrer" 
                   alt="Logo" 
                 />
