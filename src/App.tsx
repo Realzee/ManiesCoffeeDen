@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Coffee, Settings, ShieldCheck, Phone, Mail, MapPin, Award, ChevronRight, Wrench, Droplets, Zap, Plus, Menu, X } from "lucide-react";
+import { Coffee, Settings, ShieldCheck, Phone, Mail, MapPin, Award, ChevronRight, Wrench, Droplets, Zap, Plus, Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -59,7 +59,10 @@ export default function App() {
             <a href="#gallery" className="text-sm font-medium hover:text-primary transition-colors">Gallery</a>
             <a href="#guarantee" className="text-sm font-medium hover:text-primary transition-colors">Guarantee</a>
             
-            <Button size="sm" nativeButton={false} render={<a href={`tel:${CONTACT_INFO.phone}`}>Call Now</a>} />
+            <div className="flex gap-3">
+              <Button size="sm" variant="outline" className="border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700" nativeButton={false} render={<a href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(CONTACT_INFO.whatsappMessage)}`} target="_blank" rel="noopener noreferrer"><MessageCircle className="w-4 h-4 mr-2" /> WhatsApp</a>} />
+              <Button size="sm" nativeButton={false} render={<a href={`tel:${CONTACT_INFO.phone}`}>Call Now</a>} />
+            </div>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -113,6 +116,13 @@ export default function App() {
                 >
                   Guarantee
                 </a>
+                <Button 
+                  className="w-full justify-center text-lg h-12 border-green-500 text-green-600 mb-2" 
+                  variant="outline"
+                  nativeButton={false} 
+                  render={<a href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(CONTACT_INFO.whatsappMessage)}`} target="_blank" rel="noopener noreferrer"><MessageCircle className="w-5 h-5 mr-2" /> WhatsApp Us</a>}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                />
                 <Button 
                   className="w-full justify-center text-lg h-12" 
                   nativeButton={false} 
@@ -432,6 +442,15 @@ export default function App() {
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Phone</p>
                       <a href={`tel:${CONTACT_INFO.phone}`} className="text-xl font-bold hover:text-primary transition-colors">{CONTACT_INFO.phone}</a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
+                      <MessageCircle className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground">WhatsApp</p>
+                      <a href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(CONTACT_INFO.whatsappMessage)}`} target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-green-600 transition-colors">Message Us</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">

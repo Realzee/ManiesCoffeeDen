@@ -119,6 +119,8 @@ export const GALLERY_IMAGES = [
 export const CONTACT_INFO = {
   name: "Manie Khumalo",
   phone: "+27798681375",
+  whatsapp: "27798681375",
+  whatsappMessage: "Hi Manie, I'm interested in your coffee and repair services!",
   email: "maniekhumalo@vodamail.co.za",
   location: "Soweto / Johannesburg",
   membership: "Member of VASA (Vending Association of South Africa)"
