@@ -1,4 +1,7 @@
 export const PRODUCTS = [
+  // To use your own custom images for products:
+  // 1. Upload your image files using the paperclip icon in the chat.
+  // 2. Change the 'image' url below to match your uploaded filename (e.g., image: "/my-custom-coffee.jpg")
   {
     category: "Solubles",
     items: [
@@ -6,19 +9,19 @@ export const PRODUCTS = [
         name: "Cappuccino Topping", 
         description: "High-froth premium milk substitute", 
         price: "R175.00 – R255.00",
-        image: "https://picsum.photos/seed/cappuccino-topping/400/400"
+        image: "/1.png"
       },
       { 
         name: "Hot Chocolate", 
         description: "Rich, free-flow vending blend", 
         price: "R140.00 – R190.00",
-        image: "https://picsum.photos/seed/hot-chocolate-powder/400/400"
+        image: "/2.png"
       },
       { 
         name: "Chai Latte", 
         description: "Spiced premium \"free flow\" mix", 
         price: "R175.00 – R285.00",
-        image: "https://picsum.photos/seed/chai-latte/400/400"
+        image: "/3.png"
       },
     ]
   },
@@ -29,37 +32,37 @@ export const PRODUCTS = [
         name: "Startup Blend", 
         description: "House favorite; Med/Dark roast", 
         price: "R270.00 – R360.00",
-        image: "https://picsum.photos/seed/coffee-beans-dark/400/400"
+        image: "/4.png"
       },
       { 
         name: "Columbia", 
         description: "Meduim / Dark Roast", 
         price: "R385.00 – R530.00",
-        image: "https://picsum.photos/seed/columbia-coffee/400/400"
+        image: "/5.png"
       },
       { 
         name: "Rwanda", 
         description: "Meduim / Dark Roast", 
         price: "R385.00 – R530.00",
-        image: "https://picsum.photos/seed/rwanda-coffee/400/400"
+        image: "/6.png"
       },
       { 
         name: "Ethiopia", 
         description: "Meduim / Dark Roast", 
         price: "R385.00 – R530.00",
-        image: "https://picsum.photos/seed/ethiopia-coffee/400/400"
+        image: "/7.png"
       },
       { 
         name: "Mocha Java Blend", 
         description: "Specialty Blend", 
         price: "R340.00 – R415.00",
-        image: "https://picsum.photos/seed/mocha-java/400/400"
+        image: "/8.png"
       },
       { 
         name: "Sidumo / Sidamo", 
         description: "Specialty Blend", 
         price: "R340.00 – R415.00",
-        image: "https://picsum.photos/seed/sidamo-coffee/400/400"
+        image: "/9.png"
       },
     ]
   }
